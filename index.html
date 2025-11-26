@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gilesther Preparatory School | Wiyumiririe</title>
+    <meta name="description"
+        content="Christian-founded CBC school offering quality education from ECDE to Grade 9. Located in Wiyumiririe along Nyahururu–Nyeri Road.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        heading: ['"Playfair Display"', 'serif'],
+                        body: ['Inter', 'sans-serif']
+                    },
+                    colors: {
+                        primary: '#1B5E20',
+                        secondary: '#8B0000',
+                        accent: '#2E7D32',
+                        gold: '#D4AF37',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .animate-fade {
+            animation: fadeIn 1.2s ease-out forwards;
+        }
+
+        .animate-slide {
+            animation: slideUp 1s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body class="font-body text-gray-800">
+
+    <!-- Navbar -->
+    <nav class="bg-primary text-white fixed w-full z-50 shadow-2xl">
+        <div class="container mx-auto flex justify-between items-center py-5 px-8">
+            <a href="#home" class="text-2xl md:text-3xl font-heading font-bold tracking-wide">Gilesther Preparatory
+                School</a>
+            <div class="hidden md:flex space-x-10 text-lg font-medium">
+                <a href="#home" class="hover:text-gold transition">Home</a>
+                <a href="#about" class="hover:text-gold transition">About</a>
+                <a href="#mission-vision" class="hover:text-gold transition">Mission & Vision</a>
+                <a href="#enroll" class="hover:text-gold transition">Enroll</a>
+                <a href="#contact" class="hover:text-gold transition">Contact</a>
+            </div>
+            <button class="md:hidden" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-primary/95 py-6">
+            <div class="flex flex-col space-y-6 text-center text-lg font-medium">
+                <a href="#home" class="hover:text-gold">Home</a>
+                <a href="#about" class="hover:text-gold">About</a>
+                <a href="#mission-vision" class="hover:text-gold">Mission & Vision</a>
+                <a href="#enroll" class="hover:text-gold">Enroll</a>
+                <a href="#contact" class="hover:text-gold">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home"
+        class="relative h-screen flex items-center justify-center text-center text-white overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary to-secondary/95"></div>
+        <div class="relative z-10 px-6 max-w-5xl animate-fade">
+            <h1 class="text-5xl md:text-7xl font-heading font-bold leading-tight mb-6">
+                GILESTHER PREPARATORY SCHOOL
+            </h1>
+            <div class="w-48 h-48 md:w-64 md:h-64 mx-auto mb-8 bg-white rounded-full shadow-2xl p-6 animate-slide">
+                <img src="C:\Users\Administrator\Pictures\logo.jpg" alt="School Logo"
+                    class="w-full h-full object-contain rounded-full border-8 border-gold/30">
+            </div>
+            <p class="text-2xl md:text-3xl font-medium mb-4">Wiyumiririe • Along Nyahururu–Nyeri Road</p>
+            <p class="text-xl md:text-2xl mb-10 opacity-90">
+                Quality Education from <span class="font-bold">ECDE to Grade 9</span>
+            </p>
+            <div class="space-x-6">
+                <a href="#enroll"
+                    class="inline-block bg-gold text-primary px-10 py-5 text-xl font-bold rounded-full shadow-2xl hover:bg-yellow-500 transition transform hover:scale-105">
+                    Enroll Now
+                </a>
+                <a href="#about"
+                    class="inline-block border-2 border-white px-10 py-5 text-xl font-bold rounded-full hover:bg-white hover:text-primary transition">
+                    Discover More
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 bg-white">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-4xl md:text-6xl font-heading font-bold text-center text-primary mb-16">Excellence Rooted in
+                Faith</h2>
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8 text-lg leading-relaxed">
+                    <p class="text-xl">
+                        Gilesther Preparatory School is located
+                        in <strong>Wiyumiririe</strong>, along the Nyahururu–Nyeri Road, Nyandarua County.
+                    </p>
+                    <p class="text-xl">
+                        We deliver the full <strong>Competency-Based Curriculum (CBC)</strong> from Early Childhood
+                        Development Education (ECDE) to Grade 9 — nurturing academic brilliance alongside strong
+                        moral and spiritual values.
+                    </p>
+                    <p class="text-xl font-semibold text-secondary">
+                        "Hard Work Pays" — Our motto is more than words. It is the heartbeat of our community.
+                    </p>
+                </div>
+                <div class="relative group">
+                    <div class="bg-gradient-to-br from-primary to-secondary rounded-3xl p-2 shadow-2xl">
+                        <div
+                            class="bg-gray-200 border-4 border-dashed rounded-3xl w-full h-96 flex items-center justify-center">
+                            <img src="C:\Users\Administrator\Pictures\gil.jpg" alt="School Photo"
+                                class="mx-auto rounded-3xl shadow-2xl object-cover w-full h-full">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission, Vision & Motto -->
+    <section id="mission-vision" class="py-28 bg-gradient-to-b from-gray-50 to-white">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <h2 class="text-5xl md:text-6xl font-heading font-bold text-center text-primary mb-20">Our Foundation</h2>
+            <div class="grid md:grid-cols-3 gap-12">
+
+                <div class="text-center group">
+                    <div
+                        class="bg-white p-12 rounded-3xl shadow-2xl border-t-8 border-secondary transform hover:-translate-y-4 transition duration-500">
+                        <h3 class="text-3xl font-heading font-bold text-primary mb-6">Motto</h3>
+                        <p class="text-5xl font-extrabold text-secondary italic leading-tight">"Hard Work Pays"</p>
+                    </div>
+                </div>
+
+                <div class="text-center group">
+                    <div
+                        class="bg-white p-12 rounded-3xl shadow-2xl border-t-8 border-primary transform hover:-translate-y-4 transition duration-500">
+                        <h3 class="text-3xl font-heading font-bold text-primary mb-6">Mission</h3>
+                        <p class="text-xl leading-relaxed">
+                            To produce a <strong class="text-secondary">moral, spiritual, and holistic
+                                individual</strong> equipped with knowledge, skills, and godly values.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="text-center group">
+                    <div
+                        class="bg-white p-12 rounded-3xl shadow-2xl border-t-8 border-accent transform hover:-translate-y-4 transition duration-500">
+                        <h3 class="text-3xl font-heading font-bold text-primary mb-6">Vision</h3>
+                        <p class="text-xl leading-relaxed">
+                            To be the <strong class="text-secondary">number one provider of affordable quality
+                                education</strong> at the national level.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enrollment Call-to-Action -->
+    <section id="enroll" class="py-32 bg-gradient-to-r from-primary to-secondary text-white relative overflow-hidden">
+        <div class="container mx-auto px-6 text-center max-w-5xl relative z-10">
+            <h2 class="text-5xl md:text-7xl font-heading font-bold mb-10">Enrollment is Ongoing!</h2>
+            <p class="text-2xl md:text-3xl mb-12 opacity-95">
+                Secure your child’s future today — from ECDE to Grade 9
+            </p>
+            <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-16 shadow-2xl border border-white/30">
+                <p class="text-3xl font-bold mb-8">Contact us for admission inquiries</p>
+                <div class="space-y-6 text-2xl">
+                    <p class="font-semibold">
+                        Phone: <a href="tel:+254717792672" class="text-gold hover:underline font-bold">+254 717 792
+                            672</a>
+                    </p>
+                    <p class="font-semibold">
+                        Email: <a href="mailto:gilestherpreparatoryschools@gmail.com" class="text-gold hover:underline">
+                            gilestherpreparatoryschools@gmail.com
+                        </a>
+                    </p>
+                </div>
+                <a href="#contact"
+                    class="inline-block mt-12 bg-gold text-primary px-16 py-6 text-2xl font-bold rounded-full shadow-2xl hover:bg-yellow-500 transition transform hover:scale-105">
+                    Get in Touch Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-28 bg-gray-100">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-5xl md:text-6xl font-heading font-bold text-primary mb-16">Visit Us Today</h2>
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
+                <div class="bg-white p-12 rounded-3xl shadow-2xl border-t-8 border-primary">
+                    <h3 class="text-3xl font-heading font-bold text-primary mb-6">Location</h3>
+                    <p class="text-xl leading-relaxed">Wiyumiririe<br>Along Nyahururu–Nyeri Road<br>Nyandarua County,
+                        Kenya</p>
+                </div>
+                <div class="bg-white p-12 rounded-3xl shadow-2xl border-t-8 border-secondary">
+                    <h3 class="text-3xl font-heading font-bold text-primary mb-6">Contact</h3>
+                    <p class="text-xl">
+                        Phone: <a href="tel:+254717792672" class="text-secondary font-bold hover:underline">+254 717 792
+                            672</a><br>
+                        Email: <a href="mailto:gilestherpreparatoryschools@gmail.com"
+                            class="text-secondary font-bold hover:underline">
+                            gilestherpreparatoryschools@gmail.com
+                        </a>
+                    </p>
+                </div>
+                <div class="bg-white p-12 rounded-3xl shadow-2xl border-t-8 border-accent">
+                    <h3 class="text-3xl font-heading font-bold text-primary mb-6">Office Hours</h3>
+                    <p class="text-xl">Mon–Fri: 8:00 AM – 4:30 PM<br>Saturday: 9:00 AM – 2:00 PM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer with Social Media Links -->
+    <footer class="bg-primary text-white py-14 text-center">
+        <div class="container mx-auto px-6">
+            <p class="text-xl font-medium mb-8">&copy; 2025 Gilesther Preparatory School • Wiyumiririe, Nyandarua County
+            </p>
+
+            <!-- Social Media Icons -->
+            <div class="flex justify-center space-x-8 mb-8">
+                <a href="https://www.facebook.com/profile.php?id=61584503421956" target="_blank"
+                    class="text-3xl hover:text-gold transition transform hover:scale-125">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/gilestherpreparatorys?igsh=b3Vtdm5id2k4dG5r" target="_blank"
+                    class="text-3xl hover:text-gold transition transform hover:scale-125">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://vm.tiktok.com/ZMHThvE7rAuQj-yBm2Q/" target="_blank"
+                    class="text-3xl hover:text-gold transition transform hover:scale-125">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://x.com/GilestherS63019?t=2J8DYRzPVc_mDzB1wgJn3g&s=09" target="_blank"
+                    class="text-3xl hover:text-gold transition transform hover:scale-125">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+            </div>
+
+            <p class="text-3xl font-heading font-bold text-gold">"Hard Work Pays"</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
