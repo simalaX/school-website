@@ -5,103 +5,443 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gilesther Preparatory School | Wiyumiririe</title>
-    <meta name="description"
-        content="Christian-founded CBC school offering quality education from ECDE to Grade 9. Located in Wiyumiririe along Nyahururu–Nyeri Road.">
-    <script src="https://cdn.tailwindcss.com"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600;700&display=swap"
         rel="stylesheet">
-    <!-- Font Awesome for social icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        heading: ['"Playfair Display"', 'serif'],
-                        body: ['Inter', 'sans-serif']
-                    },
-                    colors: {
-                        primary: '#1B5E20',
-                        secondary: '#8B0000',
-                        accent: '#2E7D32',
-                        gold: '#D4AF37',
-                    }
-                }
-            }
-        }
-    </script>
     <style>
-        .animate-fade {
-            animation: fadeIn 1.2s ease-out forwards;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
         }
 
-        .animate-slide {
-            animation: slideUp 1s ease-out forwards;
+        :root {
+            --primary: #1B5E20;
+            --secondary: #8B0000;
+            --gold: #D4AF37
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1f2937;
+            line-height: 1.6
         }
 
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .heading {
+            font-family: 'Playfair Display', serif
         }
 
-        .parallax {
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
+        img {
+            max-width: 100%;
+            display: block
+        }
+
+        a {
+            text-decoration: none
+        }
+
+        #preloader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            transition: opacity .3s
+        }
+
+        #preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none
+        }
+
+        .spinner {
+            text-align: center
+        }
+
+        .spinner img {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            margin: 0 auto 1rem
+        }
+
+        nav {
+            background: var(--primary);
+            color: #fff;
+            position: fixed;
+            width: 100%;
+            z-index: 50;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, .1)
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto
+        }
+
+        nav .logo {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 700
+        }
+
+        nav .links {
+            display: none;
+            gap: 2rem;
+            font-size: 1.1rem
+        }
+
+        nav .links a {
+            color: #fff;
+            transition: color .3s
+        }
+
+        nav .links a:hover {
+            color: var(--gold)
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            font-size: 2rem
+        }
+
+        #mobile-menu {
+            display: none;
+            background: rgba(27, 94, 32, .95);
+            padding: 1.5rem
+        }
+
+        #mobile-menu.show {
+            display: block
+        }
+
+        #mobile-menu a {
+            display: block;
+            color: #fff;
+            padding: .75rem;
+            text-align: center
+        }
+
+        #home {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            background: linear-gradient(rgba(27, 94, 32, .85), rgba(139, 0, 0, .55)), url('https://raw.githubusercontent.com/simalaX/school-website/main/gil.jpg') center/cover
+        }
+
+        #home h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem
+        }
+
+        #home .logo-img {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 2rem;
+            background: #fff;
+            border-radius: 50%;
+            padding: 1.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, .3)
+        }
+
+        #home .logo-img img {
+            border-radius: 50%;
+            border: 8px solid rgba(212, 175, 55, .3)
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            margin: .5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: all .3s
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--primary)
+        }
+
+        .btn-primary:hover {
+            background: #f4c542;
+            transform: scale(1.05)
+        }
+
+        .btn-secondary {
+            border: 2px solid #fff;
+            color: #fff
+        }
+
+        .btn-secondary:hover {
+            background: #fff;
+            color: var(--primary)
+        }
+
+        section {
+            padding: 5rem 1.5rem
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 3rem
+        }
+
+        .grid {
+            display: grid;
+            gap: 3rem;
+            align-items: center
+        }
+
+        .grid p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem
+        }
+
+        .grid strong {
+            color: var(--secondary)
+        }
+
+        .img-box {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: .5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, .2)
+        }
+
+        .img-box img {
+            border-radius: 1.5rem;
+            width: 100%;
+            height: 400px;
+            object-fit: cover
+        }
+
+        #principal {
+            background: #f9fafb
+        }
+
+        .principal-box {
+            position: relative
+        }
+
+        .badge {
+            position: absolute;
+            bottom: -1rem;
+            right: -1rem;
+            background: var(--gold);
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, .2)
+        }
+
+        .badge p:first-child {
+            font-size: 1.5rem;
+            font-weight: 700
+        }
+
+        .quote {
+            background: rgba(139, 0, 0, .05);
+            border-left: 4px solid var(--secondary);
+            padding: 1.5rem;
+            border-radius: 0 1rem 1rem 0;
+            margin-bottom: 2rem;
+            font-style: italic;
+            color: var(--secondary)
+        }
+
+        .cards {
+            display: grid;
+            gap: 2rem
+        }
+
+        .card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, .1)
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary)
+        }
+
+        #enroll {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: #fff;
+            text-align: center;
+            padding: 6rem 1.5rem
+        }
+
+        #enroll h2 {
+            color: #fff
+        }
+
+        .enroll-box {
+            background: rgba(255, 255, 255, .1);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, .3);
+            max-width: 800px;
+            margin: 0 auto
+        }
+
+        .enroll-box a {
+            color: var(--gold);
+            font-weight: 700
+        }
+
+        footer {
+            background: var(--primary);
+            color: #fff;
+            padding: 3rem 1.5rem;
+            text-align: center
+        }
+
+        footer a {
+            color: #fff
+        }
+
+        footer a:hover {
+            color: var(--gold)
+        }
+
+        .social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+            font-size: 1.5rem
+        }
+
+        .wa-btn {
+            background: #25d366;
+            color: #fff;
+            padding: .75rem 1.5rem;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            margin-top: 1rem
+        }
+
+        .float-btns {
+            position: fixed;
+            right: 1.5rem;
+            bottom: 1.5rem;
+            z-index: 100
+        }
+
+        .float-btns a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            color: #fff;
+            margin-top: .5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, .2)
+        }
+
+        .float-btns .phone {
+            background: #fff;
+            color: var(--primary)
+        }
+
+        .float-btns .wa {
+            background: #25d366
+        }
+
+        @media(min-width:768px) {
+            nav .links {
+                display: flex
+            }
+
+            .menu-btn {
+                display: none
+            }
+
+            #home h1 {
+                font-size: 4rem
+            }
+
+            #home .logo-img {
+                width: 300px;
+                height: 300px
+            }
+
+            h2 {
+                font-size: 3.5rem
+            }
+
+            .grid {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .cards {
+                grid-template-columns: repeat(3, 1fr)
+            }
         }
     </style>
 </head>
 
-<body class="font-body text-gray-800">
-
-    <!-- Navbar -->
-    <nav class="bg-primary text-white fixed w-full z-50 shadow-2xl">
-        <div class="container mx-auto flex justify-between items-center py-5 px-8">
-            <a href="#home" class="text-2xl md:text-3xl font-heading font-bold tracking-wide">Gilesther Preparatory
-                School</a>
-            <div class="hidden md:flex space-x-10 text-lg font-medium">
-                <a href="#home" class="hover:text-gold transition">Home</a>
-                <a href="#about" class="hover:text-gold transition">About</a>
-                <a href="#mission-vision" class="hover:text-gold transition">Mission & Vision</a>
-                <a href="#enroll" class="hover:text-gold transition">Enroll</a>
-                <a href="#contact" class="hover:text-gold transition">Contact</a>
-            </div>
-            <button class="md:hidden" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-            </button>
+<body>
+    <div id="preloader">
+        <div class="spinner">
+            <img src="https://raw.githubusercontent.com/simalaX/school-website/main/logo.jpg" alt="Loading">
+            <p>Loading...</p>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-primary/95 py-6">
-            <div class="flex flex-col space-y-6 text-center text-lg font-medium">
-                <a href="#home" class="hover:text-gold">Home</a>
-                <a href="#about" class="hover:text-gold">About</a>
-                <a href="#mission-vision" class="hover:text-gold">Mission & Vision</a>
-                <a href="#enroll" class="hover:text-gold">Enroll</a>
-                <a href="#contact" class="hover:text-gold">Contact</a>
+    </div>
+
+    <nav>
+        <div class="container">
+            <a href="#home" class="logo heading">Gilesther Preparatory</a>
+            <div class="links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#principal">Principal</a>
+                <a href="#enroll">Enroll</a>
+                <a href="#contact">Contact</a>
             </div>
+            <button class="menu-btn"
+                onclick="document.getElementById('mobile-menu').classList.toggle('show')">☰</button>
+        </div>
+        <div id="mobile-menu">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#principal">Principal</a>
+            <a href="#enroll">Enroll</a>
+            <a href="#contact">Contact</a>
         </div>
     </nav>
 
+<<<<<<< HEAD
     <!-- Hero Section -->
     <section id="home"
         class="relative h-screen flex items-center justify-center text-center text-white overflow-hidden">
@@ -114,196 +454,228 @@
                 <img src="https://raw.githubusercontent.com/simalaX/school-website/main/log.jpg"
      alt="School Logo"
      class="w-full h-full object-contain rounded-full border-8 border-gold/30">
+=======
+    <section id="home">
+        <div>
+            <h1 class="heading">GILESTHER PREPARATORY SCHOOL</h1>
+            <div class="logo-img">
+                <img src="https://raw.githubusercontent.com/simalaX/school-website/main/logo.jpg" alt="Logo">
+>>>>>>> 8396565 (Update website with principal section and performance optimizations)
             </div>
-            <p class="text-2xl md:text-3xl font-medium mb-4">Wiyumiririe • Along Nyahururu–Nyeri Road</p>
-            <p class="text-xl md:text-2xl mb-10 opacity-90">
-                Quality Education from <span class="font-bold">ECDE to Grade 9</span>
-            </p>
-            <div class="space-x-6">
-                <a href="#enroll"
-                    class="inline-block bg-gold text-primary px-10 py-5 text-xl font-bold rounded-full shadow-2xl hover:bg-yellow-500 transition transform hover:scale-105">
-                    Enroll Now
-                </a>
-                <a href="#about"
-                    class="inline-block border-2 border-white px-10 py-5 text-xl font-bold rounded-full hover:bg-white hover:text-primary transition">
-                    Discover More
-                </a>
+            <p style="font-size:1.5rem;margin-bottom:1rem">Wiyumiririe • Along Nyahururu–Nyeri Road</p>
+            <p style="font-size:1.2rem;margin-bottom:2rem">Quality Education from <strong>ECDE to Grade 9</strong></p>
+            <div>
+                <a href="#enroll" class="btn btn-primary">Enroll Now</a>
+                <a href="#about" class="btn btn-secondary">Learn More</a>
             </div>
-        </div>
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-24 px-6 bg-white">
-        <div class="container mx-auto max-w-6xl">
-            <h2 class="text-4xl md:text-6xl font-heading font-bold text-center text-primary mb-16">Excellence Rooted in
-                Faith</h2>
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="space-y-8 text-lg leading-relaxed">
-                    <p class="text-xl">
-                        Gilesther Preparatory School is located
-                        in <strong>Wiyumiririe</strong>, along the Nyahururu–Nyeri Road, Laikipia County.
-                    </p>
-                    <p class="text-xl">
-                        We deliver the full <strong>Competency-Based Curriculum (CBC)</strong> from Early Childhood
-                        Development Education (ECDE) to Grade 9 — nurturing academic brilliance alongside strong
-                        moral and spiritual values.
-                    </p>
-                    <p class="text-xl font-semibold text-secondary">
-                        "Hard Work Pays" — Our motto is more than words. It is the heartbeat of our community.
-                    </p>
+    <section id="about">
+        <div class="container">
+            <h2 class="heading">Excellence Rooted in Faith</h2>
+            <div class="grid">
+                <div>
+                    <p>Gilesther Preparatory School is located in <strong>Wiyumiririe</strong>, along the
+                        Nyahururu–Nyeri Road, Laikipia County.</p>
+                    <p>We deliver the full <strong>Competency-Based Curriculum (CBC)</strong> from ECDE to Grade 9 —
+                        nurturing academic brilliance alongside strong moral and spiritual values.</p>
+                    <p style="color:var(--secondary);font-weight:600">"Hard Work Pays" — Our motto is the heartbeat of
+                        our community.</p>
                 </div>
-                <div class="relative group">
-                    <div class="bg-gradient-to-br from-primary to-secondary rounded-3xl p-2 shadow-2xl">
-                        <div
-                            class="bg-gray-200 border-4 border-dashed rounded-3xl w-full h-96 flex items-center justify-center">
-
-                            <img src=" https://raw.githubusercontent.com/simalaX/school-website/main/gil.jpg "
-                                alt="School Photo" class="mx-auto rounded-3xl shadow-2xl object-cover w-full h-full">
-
-                        </div>
-                    </div>
+                <div class="img-box">
+                    <img src="https://raw.githubusercontent.com/simalaX/school-website/main/gil.jpg" alt="School">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Mission, Vision & Motto -->
-    <section id="mission-vision" class="py-28 bg-gradient-to-b from-gray-50 to-white">
-        <div class="container mx-auto px-6 max-w-7xl">
-            <h2 class="text-5xl md:text-6xl font-heading font-bold text-center text-primary mb-20">Our Foundation</h2>
-            <div class="grid md:grid-cols-3 gap-12">
-
-                <div class="text-center group">
-                    <div
-                        class="bg-white p-12 rounded-3xl shadow-2xl border-t-8 border-secondary transform hover:-translate-y-4 transition duration-500">
-                        <h3 class="text-3xl font-heading font-bold text-primary mb-6">Motto</h3>
-                        <p class="text-5xl font-extrabold text-secondary italic leading-tight">"Hard Work Pays"</p>
+    <section id="principal">
+        <div class="container">
+            <h2 class="heading">A Message from Our Principal</h2>
+            <div class="grid">
+                <div class="principal-box">
+                    <div class="img-box">
+                        <img src="https://raw.githubusercontent.com/simalaX/school-website/main/principal.jpg"
+                            alt="Mr. Waweru" loading="lazy">
+                    </div>
+                    <div class="badge">
+                        <p>Mr. Waweru</p>
+                        <p style="font-size:1rem">School Principal</p>
                     </div>
                 </div>
-
-                <div class="text-center group">
-                    <div
-                        class="bg-white p-12 rounded-3xl shadow-2xl border-t-8 border-primary transform hover:-translate-y-4 transition duration-500">
-                        <h3 class="text-3xl font-heading font-bold text-primary mb-6">Mission</h3>
-                        <p class="text-xl leading-relaxed">
-                            To produce a <strong class="text-secondary">moral, spiritual, and holistic
-                                individual</strong> equipped with knowledge, skills, and godly values.
-                        </p>
+                <div>
+                    <div class="quote">
+                        <p style="font-size:1.3rem;margin-bottom:.5rem">"Education is not the filling of a pail, but the
+                            lighting of a fire."</p>
+                        <p style="text-align:right;font-size:.9rem;font-style:normal">— Mr. Waweru</p>
                     </div>
-                </div>
-
-                <div class="text-center group">
-                    <div
-                        class="bg-white p-12 rounded-3xl shadow-2xl border-t-8 border-accent transform hover:-translate-y-4 transition duration-500">
-                        <h3 class="text-3xl font-heading font-bold text-primary mb-6">Vision</h3>
-                        <p class="text-xl leading-relaxed">
-                            To be the <strong class="text-secondary">number one provider of affordable quality
-                                education</strong> at the national level.
-                        </p>
-                    </div>
+                    <p>Welcome to Gilesther Preparatory School. As Principal, I am honored to lead an institution that
+                        stands firmly on the foundation of <strong>academic excellence</strong>, <strong>Christian
+                            values</strong>, and <strong>holistic development</strong>.</p>
+                    <p>Through the <strong>CBC</strong>, we equip learners not just with knowledge, but with critical
+                        thinking, creativity, and strong moral character.</p>
+                    <p style="color:var(--primary);font-weight:600">I invite you to join our growing family. Together,
+                        we will shape the leaders of tomorrow.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Enrollment Call-to-Action -->
-    <section id="enroll" class="py-32 bg-gradient-to-r from-primary to-secondary text-white relative overflow-hidden">
-        <div class="container mx-auto px-6 text-center max-w-5xl relative z-10">
-            <h2 class="text-5xl md:text-7xl font-heading font-bold mb-10">Enrollment is Ongoing!</h2>
-            <p class="text-2xl md:text-3xl mb-12 opacity-95">
-                Secure your child's future today — from ECDE to Grade 9
-            </p>
-            <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-16 shadow-2xl border border-white/30">
-                <p class="text-3xl font-bold mb-8">Contact us for admission inquiries</p>
-                <div class="space-y-6 text-2xl">
-                    <p class="font-semibold">
-                        Phone: <a href="tel:+254717792672" class="text-gold hover:underline font-bold">+254 717 792
-                            672</a>
-                    </p>
-                    <p class="font-semibold">
-                        Email: <a href="mailto:gilestherpreparatoryschools@gmail.com" class="text-gold hover:underline">
-                            gilestherpreparatoryschools@gmail.com
-                        </a>
-                    </p>
+    <section>
+        <div class="container">
+            <h2 class="heading">Why Choose Gilesther?</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>CBC-Aligned Learning</h3>
+                    <p>Competency-based lessons designed to develop skills, not just memorization.</p>
                 </div>
-                <a href="#contact"
-                    class="inline-block mt-12 bg-gold text-primary px-16 py-6 text-2xl font-bold rounded-full shadow-2xl hover:bg-yellow-500 transition transform hover:scale-105">
-                    Get in Touch Now
-                </a>
+                <div class="card">
+                    <h3>Safe Environment</h3>
+                    <p>Student safety and pastoral care guided by Christian values.</p>
+                </div>
+                <div class="card">
+                    <h3>Qualified Teachers</h3>
+                    <p>Experienced educators committed to excellence and moral development.</p>
+                </div>
+                <div class="card">
+                    <h3>Affordable Quality</h3>
+                    <p>High standards without unaffordable fees.</p>
+                </div>
+                <div class="card">
+                    <h3>Holistic Development</h3>
+                    <p>Extra-curricular activities that build character and confidence.</p>
+                </div>
+                <div class="card">
+                    <h3>Parent Communication</h3>
+                    <p>Transparent updates and easy contact channels.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-28 bg-gray-100">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-5xl md:text-6xl font-heading font-bold text-primary mb-16">Visit Us Today</h2>
-            <div class="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
-                <div class="bg-white p-12 rounded-3xl shadow-2xl border-t-8 border-primary">
-                    <h3 class="text-3xl font-heading font-bold text-primary mb-6">Location</h3>
-                    <p class="text-xl leading-relaxed">Wiyumiririe<br>Along Nyahururu–Nyeri Road<br>Laikipia County,
-                        Kenya</p>
+    <section id="enroll">
+        <h2 class="heading">Enrollment is Ongoing!</h2>
+        <p style="font-size:1.5rem;margin-bottom:3rem">Secure your child's future today — from ECDE to Grade 9</p>
+        <div class="enroll-box">
+            <p style="font-size:1.8rem;font-weight:700;margin-bottom:2rem">Contact us for admission inquiries</p>
+            <p style="font-size:1.3rem;margin:1rem 0">Phone: <a href="tel:+254717792672">+254 717 792 672</a></p>
+            <p style="font-size:1.3rem;margin:1rem 0">Email: <a
+                    href="mailto:gilestherpreparatoryschools@gmail.com">gilestherpreparatoryschools@gmail.com</a></p>
+            <a href="#contact" class="btn btn-primary" style="margin-top:2rem">Get in Touch Now</a>
+        </div>
+    </section>
+
+    <section style="background:#f9fafb">
+        <div class="container">
+            <h2 class="heading">Frequently Asked Questions</h2>
+            <div style="max-width:800px;margin:0 auto">
+                <details class="card" style="margin-bottom:1.5rem;cursor:pointer">
+                    <summary style="font-weight:600;font-size:1.1rem;cursor:pointer">What is the curriculum offered?
+                    </summary>
+                    <p style="margin-top:1rem">We follow the Competency-Based Curriculum (CBC) from ECDE through Grade
+                        9.</p>
+                </details>
+                <details class="card" style="margin-bottom:1.5rem;cursor:pointer">
+                    <summary style="font-weight:600;font-size:1.1rem;cursor:pointer">How do I enroll?</summary>
+                    <p style="margin-top:1rem">Call +254 717 792 672 or email gilestherpreparatoryschools@gmail.com to
+                        start the admission process.</p>
+                </details>
+                <details class="card" style="margin-bottom:1.5rem;cursor:pointer">
+                    <summary style="font-weight:600;font-size:1.1rem;cursor:pointer">Do you offer transport?</summary>
+                    <p style="margin-top:1rem">Transport arrangements vary by term; contact administration to confirm
+                        available routes and fees.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" style="background:#f3f4f6">
+        <div class="container">
+            <h2 class="heading">Visit Us Today</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>Location</h3>
+                    <p>Wiyumiririe<br>Along Nyahururu–Nyeri Road<br>Laikipia County, Kenya</p>
                 </div>
-                <div class="bg-white p-12 rounded-3xl shadow-2xl border-t-8 border-secondary">
-                    <h3 class="text-3xl font-heading font-bold text-primary mb-6">Contact</h3>
-                    <p class="text-xl">
-                        Phone: <a href="tel:+254717792672" class="text-secondary font-bold hover:underline">+254 717 792
+                <div class="card">
+                    <h3>Contact</h3>
+                    <p>Phone: <a href="tel:+254717792672" style="color:var(--secondary);font-weight:700">+254 717 792
                             672</a><br>
                         Email: <a href="mailto:gilestherpreparatoryschools@gmail.com"
-                            class="text-secondary font-bold hover:underline">
-                            gilestherpreparatoryschools@gmail.com
-                        </a>
-                    </p>
+                            style="color:var(--secondary);font-weight:700">gilestherpreparatoryschools@gmail.com</a></p>
                 </div>
-                <div class="bg-white p-12 rounded-3xl shadow-2xl border-t-8 border-accent">
-                    <h3 class="text-3xl font-heading font-bold text-primary mb-6">Office Hours</h3>
-                    <p class="text-xl">Mon–Fri: 8:00 AM – 4:30 PM<br>Saturday: 9:00 AM – 2:00 PM</p>
+                <div class="card">
+                    <h3>Office Hours</h3>
+                    <p>Mon–Fri: 8:00 AM – 4:30 PM<br>Saturday: 9:00 AM – 2:00 PM</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer with Social Media Links -->
-    <footer class="bg-primary text-white py-14 text-center">
-        <div class="container mx-auto px-6">
-            <p class="text-xl font-medium mb-8">&copy; 2025 Gilesther Preparatory School • Wiyumiririe, Laikipia County
-            </p>
-
-            <!-- Social Media Icons -->
-            <div class="flex justify-center space-x-8 mb-8">
-                <a href="https://www.facebook.com/profile.php?id=61584503421956" target="_blank"
-                    class="text-3xl hover:text-gold transition transform hover:scale-125">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://www.instagram.com/gilestherpreparatorys?igsh=b3Vtdm5id2k4dG5r" target="_blank"
-                    class="text-3xl hover:text-gold transition transform hover:scale-125">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://vm.tiktok.com/ZMHThvE7rAuQj-yBm2Q/" target="_blank"
-                    class="text-3xl hover:text-gold transition transform hover:scale-125">
-                    <i class="fab fa-tiktok"></i>
-                </a>
-                <a href="https://x.com/GilestherS63019?t=2J8DYRzPVc_mDzB1wgJn3g&s=09" target="_blank"
-                    class="text-3xl hover:text-gold transition transform hover:scale-125">
-                    <i class="fab fa-x-twitter"></i>
-                </a>
-                <!-- WhatsApp Button -->
-                <a href="https://wa.me/254717792672" target="_blank"
-                    class="flex items-center space-x-3 bg-green-500 text-white px-7 py-4 rounded-full text-lg font-bold hover:bg-green-600 transition transform hover:scale-110 shadow-2xl">
-                    <i class="fab fa-whatsapp text-3xl"></i>
-                    <span class="hidden sm:inline">+254 717 792 672</span>
-                </a>
+    <footer>
+        <div class="container">
+            <div class="grid" style="gap:2rem;margin-bottom:2rem">
+                <div>
+                    <h4 style="font-size:1.3rem;margin-bottom:1rem">Quick Links</h4>
+                    <div style="display:flex;flex-direction:column;gap:.75rem">
+                        <a href="#home">Home</a>
+                        <a href="#about">About</a>
+                        <a href="#principal">Principal</a>
+                        <a href="#enroll">Enroll</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+                <div style="text-align:center">
+                    <h4 style="font-size:1.3rem;margin-bottom:1rem">Follow Us</h4>
+                    <p style="margin-bottom:1rem">Phone: <a href="tel:+254717792672" style="font-weight:700">+254 717
+                            792 672</a></p>
+                    <div class="social">
+                        <a href="https://www.facebook.com/profile.php?id=61584503421956" target="_blank"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/gilestherpreparatorys?igsh=b3Vtdm5id2k4dG5r"
+                            target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://vm.tiktok.com/ZMHThvE7rAuQj-yBm2Q/" target="_blank"><i
+                                class="fab fa-tiktok"></i></a>
+                        <a href="https://x.com/GilestherS63019?t=2J8DYRzPVc_mDzB1wgJn3g&s=09" target="_blank"><i
+                                class="fab fa-x-twitter"></i></a>
+                    </div>
+                    <a href="https://wa.me/254717792672" target="_blank" class="wa-btn">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                </div>
+                <div>
+                    <h4 style="font-size:1.3rem;margin-bottom:1rem">Find Us</h4>
+                    <div
+                        style="width:100%;border-radius:1rem;overflow:hidden;border:4px solid rgba(255,255,255,.2);box-shadow:0 4px 6px rgba(0,0,0,.1)">
+                        <iframe
+                            src="https://www.google.com/maps?q=Wiyumiririe%20Nyahururu%20Nyeri%20Road%20Laikipia%20County&output=embed"
+                            width="100%" height="210" style="border:0" loading="lazy"></iframe>
+                    </div>
+                </div>
             </div>
-
-            <p class="text-3xl font-heading font-bold text-gold">"Hard Work Pays"</p>
+            <div style="text-align:center;padding-top:2rem;border-top:1px solid rgba(255,255,255,.2)">
+                <p style="font-size:1.1rem">&copy; 2025 Gilesther Preparatory School • Wiyumiririe, Laikipia County</p>
+                <p class="heading" style="font-size:1.5rem;color:var(--gold);margin-top:1rem">"Hard Work Pays"</p>
+            </div>
         </div>
     </footer>
 
+    <div class="float-btns">
+        <a href="tel:+254717792672" class="phone"><i class="fas fa-phone"></i></a>
+        <a href="https://wa.me/254717792672" target="_blank" class="wa"><i class="fab fa-whatsapp"></i></a>
+    </div>
+
+    <script>
+        window.addEventListener('load', () => document.getElementById('preloader').classList.add('hidden'));
+        document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', function (e) {
+            const t = document.querySelector(this.getAttribute('href'));
+            if (t) {
+                e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' });
+                document.getElementById('mobile-menu').classList.remove('show')
+            }
+        }));
+    </script>
 </body>
 
 </html>
