@@ -25,7 +25,8 @@
         body {
             font-family: 'Inter', sans-serif;
             color: #1f2937;
-            line-height: 1.6
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .heading {
@@ -74,7 +75,9 @@
             color: #fff;
             position: fixed;
             width: 100%;
-            z-index: 50;
+            top: 0;
+            left: 0;
+            z-index: 1000;
             box-shadow: 0 4px 6px rgba(0, 0, 0, .1)
         }
 
@@ -82,9 +85,24 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.25rem 2rem;
+            padding: 0.75rem 2rem;
             max-width: 1400px;
             margin: 0 auto
+        }
+
+        nav .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        nav .logo-wrapper img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            object-fit: cover;
         }
 
         nav .logo {
@@ -113,13 +131,19 @@
             border: none;
             color: #fff;
             cursor: pointer;
-            font-size: 2rem
+            font-size: 2rem;
+            z-index: 1001;
         }
 
         #mobile-menu {
             display: none;
-            background: rgba(27, 94, 32, .95);
-            padding: 1.5rem
+            background: rgba(27, 94, 32, .98);
+            padding: 1.5rem;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            z-index: 999;
         }
 
         #mobile-menu.show {
@@ -130,17 +154,21 @@
             display: block;
             color: #fff;
             padding: .75rem;
-            text-align: center
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         #home {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: #fff;
-            background: linear-gradient(rgba(27, 94, 32, .85), rgba(139, 0, 0, .55)), url('https://raw.githubusercontent.com/simalaX/school-website/main/gil.jpg') center/cover
+            background: linear-gradient(rgba(27, 94, 32, .85), rgba(139, 0, 0, .55)), url('https://raw.githubusercontent.com/simalaX/school-website/main/gil.jpg') center/cover fixed;
+            padding: 120px 1.5rem 80px;
+            position: relative;
+            z-index: 1;
         }
 
         #home h1 {
@@ -159,6 +187,9 @@
         }
 
         #home .logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
             border-radius: 50%;
             border: 8px solid rgba(212, 175, 55, .3)
         }
@@ -194,7 +225,10 @@
         }
 
         section {
-            padding: 5rem 1.5rem
+            padding: 5rem 1.5rem;
+            position: relative;
+            z-index: 2;
+            background: #fff;
         }
 
         .container {
@@ -243,7 +277,8 @@
         }
 
         .principal-box {
-            position: relative
+            position: relative;
+            margin-bottom: 2rem;
         }
 
         .badge {
@@ -254,7 +289,8 @@
             color: var(--primary);
             padding: 1rem 2rem;
             border-radius: 1rem;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, .2)
+            box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+            z-index: 10;
         }
 
         .badge p:first-child {
@@ -281,7 +317,12 @@
             background: #fff;
             padding: 2rem;
             border-radius: 1rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, .1)
+            box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
         }
 
         .card h3 {
@@ -294,7 +335,8 @@
             background: linear-gradient(90deg, var(--primary), var(--secondary));
             color: #fff;
             text-align: center;
-            padding: 6rem 1.5rem
+            padding: 6rem 1.5rem;
+            z-index: 2;
         }
 
         #enroll h2 {
@@ -320,7 +362,9 @@
             background: var(--primary);
             color: #fff;
             padding: 3rem 1.5rem;
-            text-align: center
+            text-align: center;
+            position: relative;
+            z-index: 2;
         }
 
         footer a {
@@ -354,7 +398,7 @@
             position: fixed;
             right: 1.5rem;
             bottom: 1.5rem;
-            z-index: 100
+            z-index: 1001;
         }
 
         .float-btns a {
@@ -366,7 +410,12 @@
             border-radius: 50%;
             color: #fff;
             margin-top: .5rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, .2)
+            box-shadow: 0 4px 8px rgba(0, 0, 0, .2);
+            transition: transform 0.3s;
+        }
+
+        .float-btns a:hover {
+            transform: scale(1.1);
         }
 
         .float-btns .phone {
@@ -385,6 +434,11 @@
 
             .menu-btn {
                 display: none
+            }
+
+            nav .logo-wrapper img {
+                width: 55px;
+                height: 55px;
             }
 
             #home h1 {
@@ -421,7 +475,10 @@
 
     <nav>
         <div class="container">
-            <a href="#home" class="logo heading">Gilesther Preparatory</a>
+            <a href="#home" class="logo-wrapper">
+                <img src="https://raw.githubusercontent.com/simalaX/school-website/main/logo.jpg" alt="Gilesther Logo">
+                <span class="logo heading">Gilesther Preparatory</span>
+            </a>
             <div class="links">
                 <a href="#home">Home</a>
                 <a href="#about">About</a>
@@ -433,34 +490,19 @@
                 onclick="document.getElementById('mobile-menu').classList.toggle('show')">☰</button>
         </div>
         <div id="mobile-menu">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#principal">Principal</a>
-            <a href="#enroll">Enroll</a>
-            <a href="#contact">Contact</a>
+            <a href="#home" onclick="document.getElementById('mobile-menu').classList.remove('show')">Home</a>
+            <a href="#about" onclick="document.getElementById('mobile-menu').classList.remove('show')">About</a>
+            <a href="#principal" onclick="document.getElementById('mobile-menu').classList.remove('show')">Principal</a>
+            <a href="#enroll" onclick="document.getElementById('mobile-menu').classList.remove('show')">Enroll</a>
+            <a href="#contact" onclick="document.getElementById('mobile-menu').classList.remove('show')">Contact</a>
         </div>
     </nav>
 
-<<<<<<< HEAD
-    <!-- Hero Section -->
-    <section id="home"
-        class="relative h-screen flex items-center justify-center text-center text-white overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary to-secondary/95"></div>
-        <div class="relative z-10 px-6 max-w-5xl animate-fade">
-            <h1 class="text-5xl md:text-7xl font-heading font-bold leading-tight mb-6">
-                GILESTHER PREPARATORY SCHOOL
-            </h1>
-            <div class="w-48 h-48 md:w-64 md:h-64 mx-auto mb-8 bg-white rounded-full shadow-2xl p-6 animate-slide">
-                <img src="https://raw.githubusercontent.com/simalaX/school-website/main/log.jpg"
-     alt="School Logo"
-     class="w-full h-full object-contain rounded-full border-8 border-gold/30">
-=======
     <section id="home">
         <div>
             <h1 class="heading">GILESTHER PREPARATORY SCHOOL</h1>
             <div class="logo-img">
-                <img src="https://raw.githubusercontent.com/simalaX/school-website/main/logo.jpg" alt="Logo">
->>>>>>> 8396565 (Update website with principal section and performance optimizations)
+                <img src="https://raw.githubusercontent.com/simalaX/school-website/main/logo.jpg" alt="School Logo">
             </div>
             <p style="font-size:1.5rem;margin-bottom:1rem">Wiyumiririe • Along Nyahururu–Nyeri Road</p>
             <p style="font-size:1.2rem;margin-bottom:2rem">Quality Education from <strong>ECDE to Grade 9</strong></p>
@@ -522,7 +564,7 @@
         </div>
     </section>
 
-    <section>
+    <section id="why-choose">
         <div class="container">
             <h2 class="heading">Why Choose Gilesther?</h2>
             <div class="cards">
@@ -573,7 +615,7 @@
                 <details class="card" style="margin-bottom:1.5rem;cursor:pointer">
                     <summary style="font-weight:600;font-size:1.1rem;cursor:pointer">What is the curriculum offered?
                     </summary>
-                    <p style="margin-top:1rem">We follow the Competency-Based Curriculum (CBC) from ECDE through Grade
+                    <p style="margin-top:1rem">We follow the Competency-Based Curriculum (CBC) from ECDE to Grade
                         9.</p>
                 </details>
                 <details class="card" style="margin-bottom:1.5rem;cursor:pointer">
@@ -671,7 +713,8 @@
         document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', function (e) {
             const t = document.querySelector(this.getAttribute('href'));
             if (t) {
-                e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' });
+                e.preventDefault();
+                t.scrollIntoView({ behavior: 'smooth' });
                 document.getElementById('mobile-menu').classList.remove('show')
             }
         }));
