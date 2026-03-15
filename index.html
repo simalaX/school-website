@@ -427,6 +427,101 @@
             background: #25d366
         }
 
+        /* ── VIDEO SECTION ── */
+        #videos {
+            background: #f9fafb;
+        }
+
+        #videos h2 {
+            margin-bottom: 1rem;
+        }
+
+        .videos-subtitle {
+            text-align: center;
+            color: #6b7280;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        .video-grid {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: 1fr;
+        }
+
+        .video-card {
+            background: #fff;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 3px solid transparent;
+        }
+
+        .video-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(27, 94, 32, .18);
+            border-color: var(--gold);
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            /* 16:9 */
+            background: #000;
+        }
+
+        /* Shorts are vertical — override aspect ratio */
+        .video-wrapper.shorts {
+            padding-bottom: 177.78%;
+            /* 9:16 */
+            max-height: 520px;
+            padding-bottom: min(177.78%, 520px);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-info {
+            padding: 1.25rem 1.5rem 1.5rem;
+            border-top: 3px solid var(--gold);
+        }
+
+        .video-info h3 {
+            font-size: 1.15rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: .4rem;
+        }
+
+        .video-info p {
+            font-size: .95rem;
+            color: #6b7280;
+        }
+
+        .video-tag {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            font-size: .75rem;
+            font-weight: 700;
+            padding: .2rem .75rem;
+            border-radius: 50px;
+            margin-bottom: .75rem;
+            letter-spacing: .05em;
+            text-transform: uppercase;
+        }
+
+        .video-tag.shorts-tag {
+            background: var(--secondary);
+        }
+
         @media(min-width:768px) {
             nav .links {
                 display: flex
@@ -461,6 +556,11 @@
             .cards {
                 grid-template-columns: repeat(3, 1fr)
             }
+
+            .video-grid {
+                grid-template-columns: repeat(2, 1fr);
+                align-items: start;
+            }
         }
     </style>
 </head>
@@ -483,6 +583,7 @@
                 <a href="#home">Home</a>
                 <a href="#about">About</a>
                 <a href="#principal">Principal</a>
+                <a href="#videos">Videos</a>
                 <a href="#enroll">Enroll</a>
                 <a href="#contact">Contact</a>
             </div>
@@ -493,6 +594,7 @@
             <a href="#home" onclick="document.getElementById('mobile-menu').classList.remove('show')">Home</a>
             <a href="#about" onclick="document.getElementById('mobile-menu').classList.remove('show')">About</a>
             <a href="#principal" onclick="document.getElementById('mobile-menu').classList.remove('show')">Principal</a>
+            <a href="#videos" onclick="document.getElementById('mobile-menu').classList.remove('show')">Videos</a>
             <a href="#enroll" onclick="document.getElementById('mobile-menu').classList.remove('show')">Enroll</a>
             <a href="#contact" onclick="document.getElementById('mobile-menu').classList.remove('show')">Contact</a>
         </div>
@@ -501,7 +603,7 @@
     <section id="home">
         <div>
             <h1 class="heading">GILESTHER PREPARATORY SCHOOL</h1>
-            
+
             <p style="font-size:1.5rem;margin-bottom:1rem">Wiyumiririe • Along Nyahururu–Nyeri Road</p>
             <p style="font-size:1.2rem;margin-bottom:2rem">Quality Education from <strong>ECDE to Grade 9</strong></p>
             <div>
@@ -594,6 +696,47 @@
         </div>
     </section>
 
+    <!-- ══════════════ VIDEO SECTION ══════════════ -->
+    <section id="videos">
+        <div class="container">
+            <h2 class="heading">See Gilesther in Action</h2>
+            <p class="videos-subtitle">Watch our school community come alive — real moments, real learners.</p>
+            <div class="video-grid">
+
+                <!-- Video 1 — regular YouTube -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/QCoe8IuFux4"
+                            title="Gilesther Preparatory School Video"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <div class="video-info">
+                        <span class="video-tag">School Life</span>
+                        <h3>Gilesther Preparatory School</h3>
+                        <p>A glimpse into our vibrant school environment and community.</p>
+                    </div>
+                </div>
+
+                <!-- Video 2 — YouTube Short -->
+                <div class="video-card">
+                    <div class="video-wrapper shorts">
+                        <iframe src="https://www.youtube.com/embed/GlYW77FxnRo" title="Gilesther School Short"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <div class="video-info">
+                        <span class="video-tag shorts-tag">Short</span>
+                        <h3>Highlights at Gilesther</h3>
+                        <p>A quick look at the energy and spirit of our learners.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- ══════════════════════════════════════════ -->
+
     <section id="enroll">
         <h2 class="heading">Enrollment is Ongoing!</h2>
         <p style="font-size:1.5rem;margin-bottom:3rem">Secure your child's future today — from ECDE to Grade 9</p>
@@ -601,7 +744,10 @@
             <p style="font-size:1.8rem;font-weight:700;margin-bottom:2rem">Contact us for admission inquiries</p>
             <p style="font-size:1.3rem;margin:1rem 0">Phone: <a href="tel:+254717792672">+254 717 792 672</a></p>
             <p style="font-size:1.3rem;margin:1rem 0">Email: <a
-                    href="mailto:gilestherpreparatoryschools@gmail.com">gilestherpreparatoryschools@gmail.com</a></p>
+                    href="/cdn-cgi/l/email-protection#99fef0f5fceaedf1fcebe9ebfce9f8ebf8edf6ebe0eafaf1f6f6f5ead9fef4f8f0f5b7faf6f4"><span
+                        class="__cf_email__"
+                        data-cfemail="6a0d03060f191e020f181a180f1a0b180b1e051813190902050506192a0d070b030644090507">[email&#160;protected]</span></a>
+            </p>
             <a href="#contact" class="btn btn-primary" style="margin-top:2rem">Get in Touch Now</a>
         </div>
     </section>
@@ -618,7 +764,10 @@
                 </details>
                 <details class="card" style="margin-bottom:1.5rem;cursor:pointer">
                     <summary style="font-weight:600;font-size:1.1rem;cursor:pointer">How do I enroll?</summary>
-                    <p style="margin-top:1rem">Call +254 717 792 672 or email gilestherpreparatoryschools@gmail.com to
+                    <p style="margin-top:1rem">Call +254 717 792 672 or email <a href="/cdn-cgi/l/email-protection"
+                            class="__cf_email__"
+                            data-cfemail="3e5957525b4d4a565b4c4e4c5b4e5f4c5f4a514c474d5d565151524d7e59535f5752105d5153">[email&#160;protected]</a>
+                        to
                         start the admission process.</p>
                 </details>
                 <details class="card" style="margin-bottom:1.5rem;cursor:pointer">
@@ -642,8 +791,11 @@
                     <h3>Contact</h3>
                     <p>Phone: <a href="tel:+254717792672" style="color:var(--secondary);font-weight:700">+254 717 792
                             672</a><br>
-                        Email: <a href="mailto:gilestherpreparatoryschools@gmail.com"
-                            style="color:var(--secondary);font-weight:700">gilestherpreparatoryschools@gmail.com</a></p>
+                        Email: <a
+                            href="/cdn-cgi/l/email-protection#1e7977727b6d6a767b6c6e6c7b6e7f6c7f6a716c676d7d767171726d5e79737f7772307d7173"
+                            style="color:var(--secondary);font-weight:700"><span class="__cf_email__"
+                                data-cfemail="23444a4f4650574b465153514653425142574c515a50404b4c4c4f5063444e424a4f0d404c4e">[email&#160;protected]</span></a>
+                    </p>
                 </div>
                 <div class="card">
                     <h3>Office Hours</h3>
@@ -662,6 +814,7 @@
                         <a href="#home">Home</a>
                         <a href="#about">About</a>
                         <a href="#principal">Principal</a>
+                        <a href="#videos">Videos</a>
                         <a href="#enroll">Enroll</a>
                         <a href="#contact">Contact</a>
                     </div>
@@ -679,6 +832,8 @@
                                 class="fab fa-tiktok"></i></a>
                         <a href="https://x.com/GilestherS63019?t=2J8DYRzPVc_mDzB1wgJn3g&s=09" target="_blank"><i
                                 class="fab fa-x-twitter"></i></a>
+                        <a href="https://youtube.com/@gilestherpreparatoryschool" target="_blank"><i
+                                class="fab fa-youtube"></i></a>
                     </div>
                     <a href="https://wa.me/254717792672" target="_blank" class="wa-btn">
                         <i class="fab fa-whatsapp"></i> WhatsApp
@@ -706,8 +861,12 @@
         <a href="https://wa.me/254717792672" target="_blank" class="wa"><i class="fab fa-whatsapp"></i></a>
     </div>
 
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
-        window.addEventListener('load', () => document.getElementById('preloader').classList.add('hidden'));
+        const hidePreloader = () => document.getElementById('preloader').classList.add('hidden');
+        window.addEventListener('load', hidePreloader);
+        setTimeout(hidePreloader, 3000);
+
         document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', function (e) {
             const t = document.querySelector(this.getAttribute('href'));
             if (t) {
